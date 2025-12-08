@@ -1,13 +1,14 @@
 ## Just a repo for my spaghetti code 😹
 
-## Project content🤡 :
--ATM Basic dawwg.py
+## Project content :
+-ATM Basic dawwg
 
--Tabel nilai dawwwwwwwwwwg.py
+-Tabel nilai dawwwwwwwwwwg
 
--Tebak angka dawwg.py
+-Tebak angka daww
 
--To Do List dawwg.py
+-To Do List dawwg
 
+-Simple-Pass_gen
 ## Goals:
 -To learn basic python🤓👆
