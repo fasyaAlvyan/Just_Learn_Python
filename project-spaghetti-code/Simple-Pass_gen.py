@@ -1,37 +1,50 @@
-import random
-import string
-
+import random as rd
+import string as sr
+User_password = ""
+final_pass_user = ""
 while True:
     try:
-        leng_pas = int(input("\033[36mLength Password (Max : 50) >> \033[0m"))
-        if leng_pas > 50:
+        user_input = int(input("\033[36mMasukkan panjang pass(min8/max50) >> \033[0m"))
+        if user_input < 8 or user_input > 50:
+            print("\033[31m[Minimum panjang password 8 digit]\033[0m")
             continue
-        number = "1234567890"
-        random_char = "@#$_&-+()/*:;?!~`|•√π÷×=°^¥€¢[]"
-        lowercase_alp = random.choices(string.ascii_lowercase, k = leng_pas)
-        uppercase_alp = random.choices(string.ascii_uppercase, k = leng_pas)
-        char = random.choices(random_char , k = leng_pas)
-        num = random.choices(number, k = leng_pas)
-        post = ""
-        for i,b,c,d in zip(lowercase_alp,num,char,uppercase_alp):
-            post += i
-            post += b
-            post += c
-            post += d
-        result = random.choices(post, k = leng_pas)
-        print("\033[35mYour password : \033[0m")
-        for i in result:
-            print(f"\033[32m{i}\033[0m",end="")
-        while True:
-            regenerate = input("\n\033[34mRegenerate (y/n) : \033[0m").lower()
-            if regenerate == "y":
-                result = random.choices(post, k = leng_pas)
-                print("\033[35mYour new password : \033[0m")
-                for i in result:
-                    print(f"\033[32m{i}\033[0m",end="")
+        else:
+            user_lower = input("\033[36mSertakan huruf kecil? (y/n) >> \033[0m").lower()
+            if user_lower == "y":
+                User_password += sr.ascii_lowercase
+            user_upper = input("\033[36mSertakan huruf besar? (y/n) >> \033[0m").lower()
+            if user_upper == "y":
+                User_password += sr.ascii_uppercase
+            else:
+                pass
+            user_number = input("\033[36mSertakan angka? (y/n) >> \033[0m").lower()
+            if user_number == "y":
+                User_password += sr.digits
+            else:
+                pass
+            user_sign = input("\033[36mSertakan tanda baca? (y/n) >> \033[0m").lower()
+            if user_sign == "y":
+                User_password += sr.punctuation
+            else:
+                pass
+            if user_lower == "n" and user_number == "n" and user_upper == "n" and user_sign == "n" or len(User_password) == 0:
+                print("\033[31m[Setujui salah satu jenis karakter]\033[0m")
                 continue
             else:
+                while True:
+                    final_pass = rd.choices(User_password, k = user_input)
+                    for password in final_pass:
+                        final_pass_user += password
+                    print(f"Password anda : \033[32m{final_pass_user}\033[0m")
+                    User_recreate = input("\033[36mAnda ingin regenerate password ? (y/n) >> \033[0m").lower()
+                    if User_recreate == "y":
+                        final_pass_user = ""
+                        continue
+                    else:
+                        print("\033[33m[Terima kasih]\033[0m")
+                        break
+
                 break
-        break
     except ValueError:
-        print("\033[31m [INPUT LENGTH PASSWORD]\033[0m")
+        print("\033[31m[Masukkan angka]\033[0m")
+        
